@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TABS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .tabs {
+    display: flex;
+    width: 100%;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #f0f0f0; 
+    font-size: large;
+    font-weight: bold;
+    
+  }
+
+  .tab:hover {
+      background-color: transparent !important;
+  }
+
+  .tab-text {
+    color: blue;
+    transition: color 0.3s;
+  }
+
+  .tab:hover .tab-text,
+  .active-tab .tab-text {
+    color: orange; 
+  }
+
+  .active-tab {
+    background-color: transparent; 
+    border-bottom: none;
+  }
+
+  .active-tab .tab-text {
+    color: green;
+  }
+
+  .text-area {
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    border-top: none;
+  }
+
+</style>
+</head>
+<body style = "margin: 20px; border: 1px;"x-data="{ activeTab: 1 }">
+  <div class="tabs">
+    <div class="tab" @click="activeTab = 1" :class="{ 'active-tab': activeTab === 1 }">
+      <span class="tab-text">Features</span>
+    </div>
+    <div class="tab" @click="activeTab = 2" :class="{ 'active-tab': activeTab === 2 }">
+      <span class="tab-text">Details</span>
+    </div>
+  </div>
+
+  <div class="text-area" x-show="activeTab === 1">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+  </div>
+
+  <div class="text-area" x-show="activeTab === 2">
+    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+</body>
+</html>
